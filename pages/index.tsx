@@ -1,11 +1,29 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const router = useRouter();
+
+  function goToDetailPage() {
+    router.push({
+      pathname: '/post/[postId]',
+      query: {
+        postId: 123,
+        ref: 'social',
+      },
+    })
+  }
+
+
+
+
+
   return (
     <>
       <Head>
@@ -20,6 +38,14 @@ export default function Home() {
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
           </p>
+          {/* testcode */}
+          <Link href="/about" legacyBehavior>
+            <a>Go to About</a>
+          </Link>
+
+          <button onClick={goToDetailPage}>Go to Post Detail Page</button>
+
+          
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
